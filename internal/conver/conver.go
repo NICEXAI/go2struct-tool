@@ -35,8 +35,9 @@ func Convert(from, to, mod string) (err error) {
 		return errorx.ErrTargetFileFormatNotSupport
 	}
 
+	fileName := util.GetFileName(to)
 	if mod == "" {
-		mod = util.GetFileName(to)
+		mod = fileName
 	}
 
 	originAbsPath := util.GetFileAbsPath(from)
@@ -54,7 +55,7 @@ func Convert(from, to, mod string) (err error) {
 		return err
 	}
 
-	structContent, err = go2struct.YAML2Struct(util2.UpperCamelCaseToUnderscore(mod), content)
+	structContent, err = go2struct.YAML2Struct(util2.UpperCamelCaseToUnderscore(fileName), content)
 	if err != nil {
 		return err
 	}
