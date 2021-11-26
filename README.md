@@ -11,9 +11,9 @@ Run the following command under your project:
 
 #### convert a yml file to a go struct
 
-> go2struct -i ./setting_default.yml -o config.go
+> go2struct-tool -i ./setting_default.yml -o config.go
 
 ### auto-conversion
 If you want to enable automatic conversion, you can use the `-w` flag.
 
-> go2struct -w -i ./setting_default.yml -o config.go
+> go2struct-tool -w -i ./setting_default.yml -o config.go

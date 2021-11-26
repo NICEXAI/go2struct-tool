@@ -5,6 +5,7 @@ import (
 	"github.com/NICEXAI/go2struct"
 	"github.com/NICEXAI/go2struct-tool/internal/errorx"
 	"github.com/NICEXAI/go2struct-tool/util"
+	util2 "github.com/NICEXAI/go2struct/util"
 	"os"
 	"strings"
 )
@@ -53,7 +54,7 @@ func Convert(from, to, mod string) (err error) {
 		return err
 	}
 
-	structContent, err = go2struct.YAML2Struct("options", content)
+	structContent, err = go2struct.YAML2Struct(util2.UpperCamelCaseToUnderscore(mod), content)
 	if err != nil {
 		return err
 	}
