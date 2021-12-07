@@ -10,13 +10,13 @@ import (
 	"runtime"
 )
 
-const version = "0.0.1"
+const version = "0.1.0"
 
 var (
-	inputFilePath string
+	inputFilePath  string
 	outputFilePath string
-	moduleName string
-	watchMode bool
+	moduleName     string
+	watchMode      bool
 )
 
 var rootCmd = &cobra.Command{

@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/NICEXAI/fstask v0.0.2
-	github.com/NICEXAI/go2struct v0.0.6
+	github.com/NICEXAI/go2struct v0.1.0
 	github.com/fatih/color v1.13.0
 	github.com/fsnotify/fsnotify v1.5.1
 	github.com/spf13/cobra v1.2.1
