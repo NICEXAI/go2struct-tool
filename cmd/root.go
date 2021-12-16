@@ -57,7 +57,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&inputFilePath, "input", "i", "", "source file path")
 	rootCmd.Flags().StringVarP(&outputFilePath, "output", "o", "", "target file path")
 	rootCmd.Flags().StringVarP(&moduleName, "module", "m", "", "module name of the target file, default: target file name")
-	rootCmd.Flags().StringVarP(&moduleName, "tag", "t", "", "set filed tag name, default: json")
+	rootCmd.Flags().StringVarP(&fieldTagName, "tag", "t", "json", "set filed tag name, default: json")
 	rootCmd.Flags().BoolVarP(&watchMode, "watch", "w", false, "listening file changes and auto convert content to Go Struct")
 }
 
