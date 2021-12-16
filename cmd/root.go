@@ -16,6 +16,7 @@ var (
 	inputFilePath  string
 	outputFilePath string
 	moduleName     string
+	fieldTagName   string
 	watchMode      bool
 )
 
@@ -31,7 +32,7 @@ var rootCmd = &cobra.Command{
 			return
 		}
 
-		if err := conver.Convert(inputFilePath, outputFilePath, moduleName); err != nil {
+		if err := conver.Convert(inputFilePath, outputFilePath, moduleName, fieldTagName); err != nil {
 			color.Red(err.Error())
 			return
 		}
@@ -39,7 +40,7 @@ var rootCmd = &cobra.Command{
 		color.Green("file convert success")
 
 		if watchMode {
-			fsTask, err := conver.Watch(inputFilePath, outputFilePath, moduleName)
+			fsTask, err := conver.Watch(inputFilePath, outputFilePath, moduleName, fieldTagName)
 			if err != nil {
 				color.Red("%v: %s", errorx.ErrCovertFailed, err.Error())
 				return
@@ -56,6 +57,7 @@ func init() {
 	rootCmd.Flags().StringVarP(&inputFilePath, "input", "i", "", "source file path")
 	rootCmd.Flags().StringVarP(&outputFilePath, "output", "o", "", "target file path")
 	rootCmd.Flags().StringVarP(&moduleName, "module", "m", "", "module name of the target file, default: target file name")
+	rootCmd.Flags().StringVarP(&moduleName, "tag", "t", "", "set filed tag name, default: json")
 	rootCmd.Flags().BoolVarP(&watchMode, "watch", "w", false, "listening file changes and auto convert content to Go Struct")
 }
 

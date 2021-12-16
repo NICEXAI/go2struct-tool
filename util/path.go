@@ -33,7 +33,7 @@ func GetFolderAbsPath(filePath string) string {
 	if len(pathArr) < 2 {
 		filePath = "./"
 	} else {
-		filePath = strings.Join(pathArr[:len(pathArr)- 1], "/")
+		filePath = strings.Join(pathArr[:len(pathArr)-1], "/")
 	}
 
 	return GetFileAbsPath(filePath)

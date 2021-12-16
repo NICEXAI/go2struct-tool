@@ -9,10 +9,10 @@ import (
 )
 
 // Watch listening file changes and auto convert content to Go Struct
-func Watch(from, to, mod string) (*fstask.FsTask, error) {
+func Watch(from, to, mod, tag string) (*fstask.FsTask, error) {
 	var (
-		fsTask        *fstask.FsTask
-		err           error
+		fsTask *fstask.FsTask
+		err    error
 	)
 
 	originFolderPath := util.GetFolderAbsPath(from)
@@ -26,7 +26,7 @@ func Watch(from, to, mod string) (*fstask.FsTask, error) {
 		Rule:   ".*" + originFileName,
 		Action: []string{"create", "write"},
 		Handle: func(event fsnotify.Event) {
-			if err = Convert(from, to, mod); err != nil {
+			if err = Convert(from, to, mod, tag); err != nil {
 				color.Red("%v: %v", errorx.ErrCovertFailed, err)
 				return
 			}

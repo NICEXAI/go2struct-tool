@@ -9,7 +9,7 @@ import (
 // GetFileFullName get current file full name
 func GetFileFullName(filePath string) string {
 	pathArr := strings.Split(filePath, "/")
-	return pathArr[len(pathArr) - 1]
+	return pathArr[len(pathArr)-1]
 }
 
 // GetFileName get current file name
@@ -19,7 +19,7 @@ func GetFileName(filePath string) string {
 	if len(fileArr) < 2 {
 		return fileArr[0]
 	}
-	return fileArr[len(fileArr) - 2]
+	return fileArr[len(fileArr)-2]
 }
 
 // CreateIfNotExist creates a file if it is not exists

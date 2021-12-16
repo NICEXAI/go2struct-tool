@@ -20,11 +20,11 @@ var (
 )
 
 // Convert arbitrary formats to Go Struct
-func Convert(from, to, mod string) (err error) {
+func Convert(from, to, mod, tag string) (err error) {
 	var (
-		content []byte
+		content       []byte
 		structContent []byte
-		file *os.File
+		file          *os.File
 	)
 
 	if !validateLegalFormat(from, iFormatList) {
@@ -55,7 +55,7 @@ func Convert(from, to, mod string) (err error) {
 		return err
 	}
 
-	structContent, err = go2struct.YAML2Struct(util2.UpperCamelCaseToUnderscore(fileName), content)
+	structContent, err = go2struct.YAML2Struct(util2.UpperCamelCaseToUnderscore(fileName), content, tag)
 	if err != nil {
 		return err
 	}
@@ -78,5 +78,5 @@ func validateLegalFormat(filename string, formatList []string) bool {
 	if len(fileArr) < 2 {
 		return false
 	}
-	return util.Include(fileArr[len(fileArr) - 1], formatList)
+	return util.Include(fileArr[len(fileArr)-1], formatList)
 }
