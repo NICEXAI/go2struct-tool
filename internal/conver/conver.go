@@ -15,7 +15,7 @@ const (
 )
 
 var (
-	iFormatList = []string{"json", "yml"}
+	iFormatList = []string{"json", "yml", "yaml"}
 	oFormatList = []string{"go"}
 )
 
@@ -55,9 +55,14 @@ func Convert(from, to, mod, tag string) (err error) {
 		return err
 	}
 
-	structContent, err = go2struct.YAML2Struct(util2.UpperCamelCaseToUnderscore(fileName), content, tag)
-	if err != nil {
-		return err
+	if util.GetFileExt(from) == "json" {
+		if structContent, err = go2struct.JSON2Struct(util2.UpperCamelCaseToUnderscore(fileName), content, tag); err != nil {
+			return err
+		}
+	} else {
+		if structContent, err = go2struct.YAML2Struct(util2.UpperCamelCaseToUnderscore(fileName), content, tag); err != nil {
+			return err
+		}
 	}
 
 	file, err = os.Create(util.GetFileAbsPath(to))

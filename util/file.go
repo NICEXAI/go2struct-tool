@@ -22,6 +22,16 @@ func GetFileName(filePath string) string {
 	return fileArr[len(fileArr)-2]
 }
 
+// GetFileExt get current file ext
+func GetFileExt(filePath string) string {
+	fileName := GetFileFullName(filePath)
+	fileArr := strings.Split(fileName, ".")
+	if len(fileArr) < 2 {
+		return fileArr[0]
+	}
+	return fileArr[len(fileArr)-1]
+}
+
 // CreateIfNotExist creates a file if it is not exists
 func CreateIfNotExist(file string) (*os.File, error) {
 	_, err := os.Stat(file)
